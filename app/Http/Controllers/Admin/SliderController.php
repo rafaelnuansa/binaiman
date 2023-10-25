@@ -169,7 +169,7 @@ class SliderController extends Controller
                 ->with('error', 'Data Product Category tidak ditemukan');
         }
 
-        Storage::delete($slider->image);
+        Storage::delete('public/slider/' . basename($slider->getOriginal('image')));
 
         if ($slider->delete()) {
             return redirect()->route('admin.sliders.index')

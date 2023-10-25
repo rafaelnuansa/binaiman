@@ -16,7 +16,7 @@
     <title>{{ isset($title) ? $title . ' - ' : '' }}Bina Iman Mulia</title>
     <!-- resources/views/components/meta-tags.blade.php -->
 
-    <meta name="description" content="{{ $description ?? 'Tenjolaya adalah sebuah kecamatan di Kabupaten Bogor, Provinsi Jawa Barat, Indonesia. Tenjolaya merupakan kecamatan hasil pemekaran dengan Kecamatan Ciampea pada tahun 2004' }}">
+    <meta name="description" content="{{ $description ?? 'Bina iman mulia' }}">
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="{{ $ogUrl ?? 'https://BinaImanMulia.com' }}">
@@ -30,7 +30,7 @@
     <meta property="twitter:domain" content="{{ $twitterDomain ?? 'BinaImanMulia.com' }}">
     <meta property="twitter:url" content="{{ $twitterUrl ?? 'https://BinaImanMulia.com' }}">
     <meta name="twitter:title" content="{{ $twitterTitle ?? 'Bina Iman Mulia' }}">
-    <meta name="twitter:description" content="{{ $twitterDescription ?? 'Tenjolaya adalah sebuah kecamatan di Kabupaten Bogor, Provinsi Jawa Barat, Indonesia. Tenjolaya merupakan kecamatan hasil pemekaran dengan Kecamatan Ciampea pada tahun 2004' }}">
+    <meta name="twitter:description" content="{{ $twitterDescription ?? 'Bina iman mulia' }}">
     <meta name="twitter:image" content="{{ $twitterImage ?? asset('logo.png') }}">
 
     <!-- Scripts -->

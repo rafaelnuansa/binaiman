@@ -15,7 +15,7 @@
                     <tr>
                         <th>#</th>
                         <th>Image</th>
-                        <th>Name</th>
+                        <th>Slug</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -23,8 +23,18 @@
                     @foreach ($programs as $program)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $program->name }}</td>
-                            <td><span class="badge bg-success">{{ $program->slug }}</span></td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-sm bg-light rounded p-1 me-2">
+                                        <img src="{{ $program->image }}" alt="" class="img-fluid d-block h-100">
+                                    </div>
+                                    <div>
+                                        <h5 class="fs-14 my-1"><a href="#" class="text-reset">{{ $program->name }}</a></h5>
+                                        <span class="badge bg-success">{{ $program->slug }}</span>
+                                    </div>
+                                </div>
+
+                            <td><span class="badge bg-dark">{{ $program->created_at }}</span></td>
                             <td>
                                 <a href="{{ route('admin.programs.edit', $program->id) }}" class="btn btn-sm btn-success">Edit</a>
                                 <form action="{{ route('admin.programs.destroy', $program->id) }}" method="POST" style="display: inline;">

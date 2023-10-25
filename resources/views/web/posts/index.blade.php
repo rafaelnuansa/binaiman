@@ -1,5 +1,5 @@
 <x-web-layout>
-    <section class="bg-gray-100 py-16 dark:bg-gray-900">
+    <section class="bg-gray-300 py-16 dark:bg-gray-900">
         <div class="mx-auto px-4 sm:px-6 md:px-4 lg:max-w-6xl xl:max-w-7xl lg:px-8">
             <h2 class="text-3xl text-gray-900 dark:text-gray-100 font-semibold leading-6 tracking-tight mb-6">Berita Terupdate</h2>
 

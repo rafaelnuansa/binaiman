@@ -13,7 +13,8 @@ class TeamController extends Controller
 {
     public function index()
     {
-        return view('admin.teams.index');
+        $teams = Team::latest()->paginate(10);
+        return view('admin.teams.index', compact('teams'));
     }
 
     public function create()
@@ -87,14 +88,14 @@ class TeamController extends Controller
         // Check if there's a new image
         if ($request->hasFile('image')) {
             // Remove old image
-            Storage::disk('local')->delete('public/teams/' . basename($team->image));
+            Storage::delete('public/teams/' . basename($team->getOriginal('image')));
             // Upload new image
             $image = $request->file('image');
             $image->storeAs('public/teams', $image->hashName());
             $team->image = $image->hashName();
         }
 
-        $team->title = $request->name;
+        $team->name = $request->name;
         $team->slug = Str::slug($request->name, '-');
         $team->job = $request->job;
 
@@ -117,7 +118,10 @@ class TeamController extends Controller
                 ->with('error', 'Data Team tidak ditemukan');
         }
 
-        // Storage::delete($team->image);
+
+        if ($team->image) {
+            Storage::delete('public/teams/' . basename($team->getOriginal('image')));
+        }
 
         if ($team->delete()) {
             return redirect()->route('admin.teams.index')

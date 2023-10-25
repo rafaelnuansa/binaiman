@@ -57,7 +57,10 @@
                 </li>
 
 
-
+                <li class="nav-item">
+                    <a href="{{ route('admin.programs.index') }}" class="nav-link menu-link"><i
+                        class='bx bx-book-content'></i><span>Program</span> </a>
+                </li>
 
                 <li class="nav-item">
                     <a href="{{ route('admin.photos.index') }}" class="nav-link menu-link"><i
@@ -66,19 +69,19 @@
 
                 <li class="nav-item">
                     <a href="{{ route('admin.pages.index') }}" class="nav-link menu-link"><i
-                            class='bx bx-images'></i><span>Pages</span> </a>
+                            class='bx bx-file-blank'></i><span>Pages</span> </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route('admin.photos.index') }}" class="nav-link menu-link"><i
-                            class='bx bx-images'></i><span>About</span> </a>
+                            class='bx bx-info-circle'></i><span>About</span> </a>
                 </li>
-
 
                 <li class="nav-item">
                     <a href="{{ route('admin.photos.index') }}" class="nav-link menu-link"><i
-                            class='bx bx-images'></i><span>Contact</span> </a>
+                            class='bx bx-envelope'></i><span>Contact</span> </a>
                 </li>
+
 
                 <li class="nav-item">
                 <a href="{{ route('admin.users.index') }}" class="nav-link menu-link"><i

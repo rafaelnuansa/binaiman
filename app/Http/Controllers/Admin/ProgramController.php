@@ -36,7 +36,6 @@ class ProgramController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'image'       => 'required|image|mimes:jpeg,jpg,png,webp|max:2000',
-            'category_id' => 'required',
             'name'       => 'required|unique:programs',
 
         ]);
@@ -53,7 +52,7 @@ class ProgramController extends Controller
         $program = new Program([
             'image'       => $image->hashName(),
             'name'       => $request->name,
-            'job'    => $request->job,
+            'description'    => $request->description,
             'slug'        => Str::slug($request->name, '-'),
         ]);
 
@@ -97,8 +96,7 @@ class ProgramController extends Controller
         $validator = Validator::make($request->all(), [
             'image'       => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2000',
             'name'         => 'required|unique:programs,name,' . $program->id,
-            'description'      => 'required',
-
+            'description'  => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -109,19 +107,24 @@ class ProgramController extends Controller
 
         // Check if there's a new image
         if ($request->hasFile('image')) {
-            // Remove old image
-            Storage::disk('local')->delete('public/programs/' . basename($program->image));
+            // dd($oldImage);
+            if ($program->image) {
+                // Delete old image using the original attribute value
+                Storage::delete('public/programs/' . basename($program->getOriginal('image')));
+            }
+
+
+
             // Upload new image
             $image = $request->file('image');
             $image->storeAs('public/programs', $image->hashName());
             $program->image = $image->hashName();
         }
 
-        $program->title = $request->name;
+        $program->name = $request->name;
         $program->slug = Str::slug($request->name, '-');
-        $program->job = $request->job;
+        $program->description = $request->description;
 
-        // dd($program->content);
         if ($program->save()) {
             return redirect()->route('admin.programs.index')
                 ->with('success', 'Data Program berhasil diupdate');
@@ -131,12 +134,12 @@ class ProgramController extends Controller
             ->with('error', 'Data Program gagal diupdate');
     }
 
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Program $program)
     {
-        // $program = Program::find($id);
 
         if (!$program) {
             return redirect()->route('admin.programs.index')
@@ -144,6 +147,10 @@ class ProgramController extends Controller
         }
 
         // Storage::delete($program->image);
+        // Hapus gambar dari penyimpanan
+        if ($program->image) {
+            Storage::delete('public/programs/' . basename($program->getOriginal('image')));
+        }
 
         if ($program->delete()) {
             return redirect()->route('admin.programs.index')

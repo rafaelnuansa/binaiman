@@ -64,7 +64,7 @@
                         <!-- End Blockquote -->
                     </div>
                     <!-- End Col -->
-                </div>
+            </div>
                 <!-- End Grid -->
             </div>
         </div>

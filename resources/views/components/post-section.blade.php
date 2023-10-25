@@ -12,7 +12,7 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-1">
 
             @foreach ($posts as $post)
-            <x-post-card :title="$post->title" :image="$post->image" :createdAt="$post->created_at->format('d M Y')" :slug="'#'"/>
+            <x-post-card :title="$post->title" :image="$post->image" :createdAt="$post->created_at->format('d M Y')" :slug="route('web.posts.show', $post->slug)"/>
             @endforeach
             <!-- Card -->
 

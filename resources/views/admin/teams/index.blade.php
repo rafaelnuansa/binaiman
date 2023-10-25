@@ -23,23 +23,24 @@
                             <tr>
                                 <th>Image</th>
                                 <th>Name</th>
-                                <th>Aksi</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($teams as $team)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td><img src="{{ $team->image }}" alt="{{ $team->name }}" height="45"></td>
                                     <td><b>{{ $team->name }}</b><br>
                                   <span class="badge bg-dark">  {{ $team->job }}</span>
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('admin.posts.show', $post->id) }}"
+                                            <a href="{{ route('admin.teams.show', $team->id) }}"
                                                 class="btn btn-sm btn-info">Detail</a>
-                                            <a href="{{ route('admin.posts.edit', $post->id) }}"
+                                            <a href="{{ route('admin.teams.edit', $team->id) }}"
                                                 class="btn btn-sm btn-warning">Edit</a>
-                                            <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST"
+                                            <form action="{{ route('admin.teams.destroy', $team->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
@@ -52,7 +53,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $posts->links() }}
+                    {{ $teams->links() }}
                 </div>
             </div>
         </div>

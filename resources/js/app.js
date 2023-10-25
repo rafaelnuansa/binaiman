@@ -1,5 +1,6 @@
 import './bootstrap';
 import 'preline/dist/preline';
+import 'flowbite/dist/flowbite';
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;

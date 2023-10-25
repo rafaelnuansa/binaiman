@@ -15,11 +15,11 @@ $title = 'Tentang';
 />
 
 <x-title :title="$title" />
-<x-app-layout>
+<x-web-layout>
     <section class="bg-white dark:bg-gray-900">
         <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
             <div class="mr-auto place-self-center lg:col-span-10">
-                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">{{ __('general.about_us') }}</h1>
+                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold  md:text-5xl xl:text-6xl dark:text-white">{{ __('general.about_us') }}</h1>
 
             </div>
             <div class="lg:mt-0 lg:col-span-2 lg:flex">
@@ -28,7 +28,7 @@ $title = 'Tentang';
         </div>
     </section>
 
-    <section class="bg-gray-100 dark:bg-gray-900">
+    <section class="bg-gray-50 dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
             <div class="w-full ">
 
@@ -42,4 +42,4 @@ $title = 'Tentang';
 
 
 
-</x-app-layout>
+</x-web-layout>

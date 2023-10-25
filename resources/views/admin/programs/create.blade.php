@@ -9,14 +9,25 @@
                     <h5 class="card-title">Create New Program</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.pages.store') }}" method="POST">
+
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                    <form action="{{ route('admin.programs.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Program</label>
                             <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
                         </div>
                         <div class="mb-3">
-                            <label for="image" class="from-label">Image</label>
+                            <label for="image" class="form-label">Image</label>
                             <input type="file" class="form-control" id="image" name="image">
                         </div>
                         <div class="mb-3">

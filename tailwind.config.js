@@ -8,6 +8,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         'node_modules/preline/dist/*.js',
+        "./node_modules/flowbite/**/*.js"
     ],
 
     theme: {
@@ -25,7 +26,7 @@ export default {
         },
     },
     darkMode: 'class',
-    plugins: [forms, require('preline/plugin'), require('@tailwindcss/typography')
+    plugins: [forms, require('preline/plugin'), require('@tailwindcss/typography'), require('flowbite/plugin')
 
     ],
 };

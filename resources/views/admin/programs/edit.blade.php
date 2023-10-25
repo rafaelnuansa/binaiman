@@ -9,17 +9,33 @@
                     <h5 class="card-title">Edit Program</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.programs.update', $page->id) }}" method="POST">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
+                    <form action="{{ route('admin.programs.update', $program->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
+                        @method('PUT') <!-- Untuk method HTTP PUT -->
+
                         <div class="mb-3">
-                            <label for="name" class="form-label">Program Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{ $page->name }}" required>
+                            <label for="name" class="form-label">Program</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $program->name) }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Content Description</label>
-                            <textarea class="form-control" id="editor" name="description" rows="5" required>{{ $page->description }}</textarea>
+                            <textarea class="form-control" id="editor" name="description" rows="5" required>{{ old('description', $program->description) }}</textarea>
                         </div>
+
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="{{ route('admin.programs.index') }}" class="btn btn-secondary">Kembali</a>
                     </form>
@@ -28,3 +44,12 @@
         </div>
     </div>
 </div>
+
+<!-- Include CKEditor script and initialize -->
+<script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor', {
+        // CKEditor configuration options (if needed)
+    });
+</script>
+@endsection

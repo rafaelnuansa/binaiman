@@ -16,14 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Http\Controllers\Web\HomeController::class)->name('home');
 Route::get('/about', [App\Http\Controllers\Web\AboutController::class, 'index'])->name('web.about.index');
-Route::get('/contact', [App\Http\Controllers\Web\AboutController::class, 'index'])->name('web.contact.index');
+Route::get('/contact', [App\Http\Controllers\Web\ContactController::class, 'index'])->name('web.contact.index');
 
 Route::get('/posts', [App\Http\Controllers\Web\PostController::class, 'index'])->name('web.posts');
 Route::get('/posts/{slug}', [App\Http\Controllers\Web\PostController::class, 'show'])->name('web.posts.show');
 Route::get('/posts/kategori', [App\Http\Controllers\Web\PostController::class, 'index'])->name('web.posts.kategori');
 
 
-Route::get('/program/{slug}', [App\Http\Controllers\Web\ProgramController::class, 'show'])->name('web.programs.show');
+Route::get('/programs', [App\Http\Controllers\Web\ProgramController::class, 'index'])->name('web.programs.index');
+Route::get('/programs/{slug}', [App\Http\Controllers\Web\ProgramController::class, 'show'])->name('web.programs.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,9 +40,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'v
     Route::resource('posts', App\Http\Controllers\Admin\PostController::class)->names('posts');
     Route::resource('teams', App\Http\Controllers\Admin\TeamControlller::class)->names('teams');
     Route::resource('programs', App\Http\Controllers\Admin\ProgramController::class)->names('programs');
+    Route::resource('sliders', App\Http\Controllers\Admin\SliderController::class)->names('sliders');
     Route::get('/dark-mode', [App\Http\Controllers\Admin\DarkModeController::class, 'toggleDarkMode'])->name('dark-mode.toggle');
 
     Route::resource('pages', App\Http\Controllers\Admin\PageController::class)->names('pages');
+    Route::resource('teams', App\Http\Controllers\Admin\TeamController::class)->names('teams');
     Route::resource('users', App\Http\Controllers\Admin\UserController::class)->names('users');
     Route::resource('photos', App\Http\Controllers\Admin\PhotoController::class)->names('photos');
 });

@@ -9,10 +9,10 @@
         <div class="flex justify-center">
             <div class="lg:w-2/3 text-center relative">
                 <div class="space-y-6 mb-10">
-                    <!-- Home Page Title -->
                     <h1
                         class="mt-5 text-4xl font-bold tracking-tighter text-gray-100 sm:mt-0 md:mt-5 lg:mt-10 xl:mt-10 sm:text-5xl/[3.5rem] md:text-6xl lg:text-6xl">
-                        {{ __('general.boarding_school') }}
+                        {{-- {{ __('general.boarding_school') }} --}}
+                        Yayasan
                         <span class="text-green-400 ">Bina Iman Mulia</span>
                     </h1>
                     <p class="text-gray-100 text-base md:text-lg animate__animated animate__fadeInUp">
@@ -20,11 +20,10 @@
                         yang memiliki kecerdasan intelektual dan spiritual demi pembangunan agama, bangsa dan negara.
                     </p>
 
-                    <!-- Video Modal Outline Button -->
-                    <button type="button"
+                    {{-- <button type="button"
                         class="inline-block px-6 py-2.5 rounded text-base font-medium cursor-pointer select-none outline-none transition-all duration-500 focus:outline-none focus:ring-0 focus:ring-offset-0 hover:-translate-y-1.5 bg-[#f0b90b] text-[#1e2026] border-[#f0b90b] hover:bg-[#f0b90b] animate__animated animate__fadeInDown">
-                        Daftar Sekarang <span class="mdi mdi-play-circle text-xl align-middle ml-2"></span>
-                    </button>
+                        Contact <span class="mdi mdi-play-circle text-xl align-middle ml-2"></span>
+                    </button> --}}
                 </div>
             </div>
         </div>

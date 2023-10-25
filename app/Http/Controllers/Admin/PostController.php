@@ -168,7 +168,7 @@ class PostController extends Controller
         // Check if there's a new image
         if ($request->hasFile('image')) {
             // Remove old image
-            Storage::disk('local')->delete('public/posts/' . basename($post->image));
+            Storage::delete('public/posts/' . basename($post->getOriginal('image')));
             // Upload new image
             $image = $request->file('image');
             $image->storeAs('public/posts', $image->hashName());
@@ -211,8 +211,10 @@ class PostController extends Controller
                 ->with('error', 'Data Post tidak ditemukan');
         }
 
-        Storage::delete($post->image);
+        if ($post->image) {
 
+            Storage::delete('public/posts/' . basename($post->getOriginal('image')));
+        }
         if ($post->delete()) {
             return redirect()->route('admin.posts.index')
                 ->with('success', 'Data Post berhasil dihapus');
@@ -221,5 +223,4 @@ class PostController extends Controller
         return redirect()->route('admin.posts.index')
             ->with('error', 'Data Post gagal dihapus');
     }
-
 }
