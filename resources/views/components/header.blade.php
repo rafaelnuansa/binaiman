@@ -182,11 +182,11 @@
                         </div>
 
                         <a class="font-medium text-gray-500 hover:text-gray-400 py-3 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-                            href="#">
+                            href="{{ route('web.about.index') }}">
                             About Us
                         </a>
                         <a class="font-medium text-gray-500 hover:text-gray-400 py-3 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-                            href="#">
+                            href="{{ route('web.contact.index') }}">
                             Contact
                         </a>
                         <a class="font-medium text-gray-500 hover:text-gray-400 py-3 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"

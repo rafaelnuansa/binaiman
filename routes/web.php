@@ -23,6 +23,8 @@ Route::get('/posts/{slug}', [App\Http\Controllers\Web\PostController::class, 'sh
 Route::get('/posts/kategori', [App\Http\Controllers\Web\PostController::class, 'index'])->name('web.posts.kategori');
 
 
+Route::get('/program/{slug}', [App\Http\Controllers\Web\ProgramController::class, 'show'])->name('web.programs.show');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -35,6 +37,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'v
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
     Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class)->names('categories');
     Route::resource('posts', App\Http\Controllers\Admin\PostController::class)->names('posts');
+    Route::resource('teams', App\Http\Controllers\Admin\TeamControlller::class)->names('teams');
+    Route::resource('programs', App\Http\Controllers\Admin\ProgramController::class)->names('programs');
     Route::get('/dark-mode', [App\Http\Controllers\Admin\DarkModeController::class, 'toggleDarkMode'])->name('dark-mode.toggle');
 
     Route::resource('pages', App\Http\Controllers\Admin\PageController::class)->names('pages');

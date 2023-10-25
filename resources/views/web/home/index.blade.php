@@ -5,41 +5,7 @@
 
     <x-hero />
 
-    <section>
-        <!-- Card Blog -->
-        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <div class="mx-auto  mb-10 lg:mb-14">
-                <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Program Kami</h2>
-                <p class="mt-1 text-gray-600 dark:text-gray-400">Program kami copywriting</p>
-            </div>
-            <!-- Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card -->
-                @for ($i = 0; $i < 6; $i++)
-                    <a class="group relative block transform transition-transform duration-300 hover:scale-105"
-                        href="#">
-                        <div
-                            class="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[250px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]">
-                            <img class="w-full h-full absolute top-0 left-0 object-cover"
-                                src="https://images.unsplash.com/photo-1619238538198-0a71b158ea7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                                alt="Image Description">
-                        </div>
-
-                        <div class="absolute bottom-0 inset-x-0 z-10">
-                            <div class="flex flex-col h-full p-4 sm:p-6">
-                                <h3
-                                    class="text-md md:text-lg font-semibold text-white group-hover:text-white/[.8] overflow-ellipsis line-clamp-2">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis rerum quod ratione
-                                    impedit amet facilis sunt hic provident
-                                </h3>
-                            </div>
-                        </div>
-                    </a>
-                @endfor
-
-            </div>
-        </div>
-    </section>
+    <x-program-section/>
 
     <section class="bg-gray-100 dark:bg-gray-950">
         <div class="relative overflow-hidden">
@@ -105,41 +71,7 @@
     </section>
 
 
-    <section>
-        <!-- Card Blog -->
-        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <!-- Title -->
-            <div class="mb-10 lg:mb-14">
-                <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">{{ __('general.latest_post') }}</h2>
-                <p class="mt-1 text-gray-600 dark:text-gray-400">Informasi Terkini.</p>
-            </div>
-            <!-- End Title -->
 
-            <!-- Grid -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-1">
-
-                @foreach ($posts as $post)
-                    <a class="group hover:bg-gray-100 rounded-xl p-2 transition-all dark:hover:bg-white/[.05]"
-                        href="{{ route('web.posts.show', $post->slug) }}">
-                        <div class="flex-shrink-0 relative rounded-xl overflow-hidden w-full h-[200] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]">
-                            <img class="w-full object-cover rounded-xl" src="{{ $post->image }}"
-                                alt="{{ $post->title ?? '' }}">
-                        </div>
-                        <h3 class="mt-5 text-xl text-gray-800 font-bold dark:text-gray-300 dark:group-hover:text-white">
-                            {{ $post->title ?? '' }}
-                        </h3>
-                        <p
-                            class="mt-3 inline-flex items-center gap-x-2 text-sm font-semibold text-gray-800 dark:text-gray-200">
-                            {{ $post->created_at->format('d M Y') }}
-                        </p>
-                    </a>
-                @endforeach
-                <!-- Card -->
-
-            </div>
-            <!-- End Grid -->
-        </div>
-        <!-- End Card Blog -->
-    </section>
-
+    <x-post-section/>
+    <x-team-section/>
 </x-web-layout>
